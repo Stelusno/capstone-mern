@@ -1,8 +1,8 @@
 import './App.css'
-import './components/NavBar/NavBar'
-import { sampleProducts } from './data'
-import NavBar from './components/NavBar/NavBar'
 import { Routes, Route } from 'react-router-dom'
+import NavBar from './components/NavBar/NavBar'
+import HomePage from './pages/HomePage/HomePage'
+import ProductPage from './pages/ProductPage/ProductPage'
 
 export default function App() {
   return (
@@ -11,17 +11,10 @@ export default function App() {
       <header>The Spot</header>
       <main>
         <ul className="product-list">
-          {sampleProducts.map((product) => (
-            <li key={product.slug} className="product-item">
-              <img
-                className="product-image"
-                src={product.image}
-                alt={product.name}
-              />
-              <h2>{product.name}</h2>
-              <p>${product.price}</p>
-            </li>
-          ))}
+          <Routes>
+            <Route path="/" element={<HomePage/>} />
+            <Route path="product/:slug" element={<ProductPage/>} />
+          </Routes>
         </ul>
       </main>
       <footer>All rights reserved</footer>
