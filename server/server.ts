@@ -3,19 +3,19 @@ const path = require('path');
 const logger = require('morgan');
 const cors = require('cors');
 
-// const corsOptions = {
-//     origin: "https://themelting-pot.onrender.com", // frontend URI (ReactJS)
-// }
+const corsOptions = {
+    origin: 'http://localhost:5173',
+}
 
 require('dotenv').config();
 require('./config/database');
 
-const apiRouter = require('./routes/api');
+const apiRouter = require('./routes/api')
 
 const app = express();
 const port = process.env.PORT || 3001;
 
-// app.use(cors(corsOptions))
+app.use(cors(corsOptions))
 app.use(logger('dev'));
 app.use(express.json());
 
